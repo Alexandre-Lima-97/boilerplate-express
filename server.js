@@ -12,16 +12,16 @@ mongoose.connect(process.env.CONNECTIONSTRING)
         console.log(e);
 });
 
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-const flash = require('connect-flash');
+const session = require('express-session'); //referente as sessões do cliente (Salvar cookie para manter logado)
+const MongoStore = require('connect-mongo'); //Para salvar as sessões na base de dados
+const flash = require('connect-flash'); //Para mensagens autodestrutivas (ao ler irão sumir da base de dados)
 
 var bodyParser  = require('body-parser');
-const routes = require('./routes');
-const path = require('path');
-const csrf = require('csurf');
+const routes = require('./routes'); //Para usar as rotas da aplicação
+const path = require('path'); //para pegar os caminhos das pastas
+const csrf = require('csurf'); //para criar tokens para envio de formulários (garantindo a segurança para que nada externo envie dados ou comandos para o server)
 
-const helmet = require('helmet');
+const helmet = require('helmet'); //olhar a documentação (sobre segurança)
 
 app.use(bodyParser.urlencoded());
 
